@@ -1,0 +1,13 @@
+flutter:
+  # This is the "flutter" section. Most app settings go here.
+
+  # Change this to your app name. This name is used on your splash screen and 
+  # as the bundle identifier for iOS.
+  # You can also optionally edit the display name in android/app/src/main/AndroidManifest.xml
+  # and in ios/Runner/Info.plist if you want them to be different.
+  name: DocuResume Pro
+  description: Application mobile d'intelligence artificielle pour résumer et analyser des documents techniques industriels
+  # ↓ The signing identity used when running `flutter build ipa`.
+  # Obtain one from https://developer.apple.com/account/resources/profiles/list
+  # for free as a member of the Apple Developer Program.
+  # ios_signing_identity: iPhone Distribution

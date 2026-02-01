@@ -282,3 +282,10 @@ final client = http.Client();
 - [ ] Notifications push
 - [ ] Statistiques utilisateur
 # classroom_dev_app
+
+## Documentation
+
+Pour plus de détails techniques, consultez notre [Wiki](docs/wiki/Home.md) :
+- [Architecture du projet](docs/wiki/Architecture.md)
+- [Référence API](docs/wiki/API_Reference.md)
+- [Guide d'installation complet](INSTALLATION.md)
