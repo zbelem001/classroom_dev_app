@@ -286,6 +286,12 @@ final client = http.Client();
 ## Documentation
 
 Pour plus de détails techniques, consultez notre [Wiki](docs/wiki/Home.md) :
-- [Architecture du projet](docs/wiki/Architecture.md)
-- [Référence API](docs/wiki/API_Reference.md)
+
+### Technique
+- [Architecture du projet](docs/wiki/Architecture.md) - Structure et choix techniques
+- [Référence API](docs/wiki/API_Reference.md) - Endpoints et intégration
+- [Guide de Déploiement](docs/wiki/Deployment_Guide.md) - Build APK/IPA/Web
+
+### Utilisateur
+- [Manuel Utilisateur](docs/wiki/User_Manual.md) - Guide d'utilisation de l'application
 - [Guide d'installation complet](INSTALLATION.md)

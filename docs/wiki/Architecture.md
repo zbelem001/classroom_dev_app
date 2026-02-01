@@ -1,29 +1,49 @@
-# Architecture de l'Application
+# Architecture Système
 
-L'application suit une architecture standard Flutter, séparée en couches.
+## Vue d'ensemble
+L'application **DocuResume Pro** est construite avec le framework **Flutter** et suit une architecture en couches (Layered Architecture) pour assurer la maintenabilité et l'évolutivité.
 
-## Structure des Dossiers (`lib/`)
+## Stack Technique
 
-### `models/`
-Contient les classes de données (POJO) qui mappent les réponses JSON de l'API.
-- `user_model.dart`: Données utilisateur (token, email).
-- `document_model.dart`: Métadonnées des fichiers uploadés.
-- `summary_model.dart`: Résumés générés.
+| Catégorie | Technologie | Description |
+|-----------|-------------|-------------|
+| **Frawework** | Flutter 3.x / Dart 3.x | Cross-platform dev |
+| **State Management** | Provider | Gestion d'état simple et efficace |
+| **Networking** | Dio / Http | Requêtes API REST |
+| **Stockage Local** | SharedPreferences | Persistance des sessions |
+| **Fichiers** | File Picker | Sélection de documents PDF |
+| **PDF** | Flutter PDFView | Visualisation de documents |
+| **UI** | Material 3 | Design System Google |
 
-### `screens/`
-Les écrans de l'application (UI).
-- `login_screen.dart`: Écran de connexion et inscription.
-- `home_screen.dart`: Dashboard principal, liste des documents.
-- `chat_screen.dart`: Interface de chat avec Gemini.
+## Diagramme d'Architecture Simplifié
 
-### `services/`
-Logique métier et appels réseau.
-- `api_service.dart`: Singleton gérant toutes les requêtes HTTP (Dio/Http) vers le backend.
+```mermaid
+graph TD
+    UI[Interface Utilisateur (Screens)] -->|Utilise| VM[Logic BLC / Providers]
+    VM -->|Appelle| CS[Client Services (API)]
+    CS -->|Requêtes HTTP| Back[Backend API]
+    UI -->|Navigation| Nav[Navigator]
+    VM -->|Stocke/Lit| Local[SharedPreferences]
+```
 
-### `widgets/`
-Composants réutilisables.
-- `document_card.dart`: Carte affichant un document dans la liste.
+## Description des Couches
 
-### `utils/`
-Utilitaires et configuration.
-- `app_theme.dart`: Thème global (couleurs, styles de texte).
+### 1. Presentation Layer (`lib/screens`, `lib/widgets`)
+Contient tous les éléments visuels.
+- **Screens**: Pages complètes (Login, Home, Chat).
+- **Widgets**: Composants réutilisables (DocumentCard, InputFields).
+- **Theme**: Définition centralisée du style (`lib/utils/app_theme.dart`).
+
+### 2. Business Logic Layer
+Gérée principalement via **Provider** (si implémenté) ou directement dans les contrôleurs de widgets pour les cas simples.
+Gestion des états de chargement (`isLoading`), des erreurs et des données métier.
+
+### 3. Data Layer (`lib/models`, `lib/services`)
+- **Models**: Classes Dart pures pour la sérialisation JSON (`fromJson`/`toJson`).
+- **Services**: `ApiService` agit comme un singleton pour communiquer avec le backend via REST.
+  - Gestion des tokens d'authentification.
+  - Intercepteurs pour les erreurs globales.
+
+## Sécurité
+- Les tokens (JWT) sont stockés localement sur l'appareil.
+- Les communications réseau se font via HTTPS.
